@@ -1,4 +1,5 @@
 This repository contains the Mathematica and Maple scripts to generate figure 1 and 2 in the paper
+
 Gafni, Y., Lavi, R. and Tennenholtz M. 2020. VCG Under Sybil (False-name) Attacks - a Bayesian Analysis. In Proceedings of the 34th National Conference on Artificial Intelligence (AAAI-20)
 
 For a full validation flow for some alpha, beta, n value, first note that the n used in the Mathematica notebooks are \tilde{n} of the paper, so decrease n by 1 for your input. Now do the following:
