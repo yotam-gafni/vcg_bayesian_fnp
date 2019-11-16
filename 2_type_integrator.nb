@@ -1,0 +1,1768 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     69781,       1760]
+NotebookOptionsPosition[     68154,       1729]
+NotebookOutlinePosition[     68511,       1745]
+CellTagsIndexPosition[     68468,       1742]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Set", " ", "the", " ", "alpha"}], ",", " ", 
+    RowBox[{"beta", " ", "parameters", " ", "to", " ", 
+     RowBox[{"check", ".", " ", "n"}], " ", 
+     RowBox[{"is", " ", "\\", "tilde"}], 
+     RowBox[{"{", "n", "}"}]}], ",", " ", 
+    RowBox[{"the", " ", "number", " ", "of", " ", "adversary", " ", 
+     RowBox[{"bidders", ".", " ", "\[IndentingNewLine]", "For"}], " ", "this",
+      " ", "polynomial"}], ",", " ", 
+    RowBox[{"assuming", " ", "that", " ", "v", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"the", " ", 
+        RowBox[{"bidder", "'"}], "s", " ", "per"}], "-", 
+       RowBox[{"item", " ", "value"}]}], ")"}], " ", "is", " ", "greater", 
+     " ", "than", " ", "half", " ", "of", " ", "his", " ", "high", " ", 
+     "attack", " ", "bid", " ", "x"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"alpha", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"beta", " ", "=", " ", "3"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"n", "=", "2"}], ",", " ", 
+     RowBox[{"n", "<", "3"}], ",", " ", 
+     RowBox[{"n", "=", 
+      RowBox[{"n", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Clear", "[", 
+       RowBox[{"v", ",", "y"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<alpha\>\"", ",", " ", "alpha"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<beta\>\"", ",", "beta"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<n\>\"", ",", "n"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Array", "[", 
+       RowBox[{"P", ",", " ", 
+        RowBox[{"n", "+", "1"}], ",", " ", "0"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Array", "[", 
+       RowBox[{"T", ",", " ", 
+        RowBox[{"n", "+", "1"}], ",", "0"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"P", "[", "n", "]"}], " ", "=", " ", 
+       RowBox[{"Expand", "[", 
+        RowBox[{"Assuming", "[", 
+         RowBox[{
+          RowBox[{"0", "<", "y", "<", "v", "<", "1"}], ",", " ", 
+          RowBox[{
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "v2"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], " ", "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", 
+                RowBox[{"2", "v1"}]}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v2"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", " ", "0", ",", "y"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v2", ",", "0", ",", "v1"}], "}"}]}], "]"}], " ", "+", 
+           " ", "\[IndentingNewLine]", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "v2"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], " ", "*", 
+              RowBox[{"(", 
+               RowBox[{"-", "y"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v2"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", " ", "y", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v2", ",", "0", ",", "y"}], "}"}]}], "]"}], " ", "+", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "v2"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], " ", "*", 
+              RowBox[{"(", 
+               RowBox[{"-", "v2"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v2"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", " ", "y", ",", "1"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v2", ",", "y", ",", "v1"}], "}"}]}], "]"}]}]}], "]"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"P", "[", "n", "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"P", "[", "0", "]"}], " ", "=", " ", 
+       RowBox[{"Expand", "[", 
+        RowBox[{"Assuming", "[", 
+         RowBox[{
+          RowBox[{"0", "<", "y", "<", "v", "<", "1"}], ",", 
+          RowBox[{
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{"2", "v"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", " ", "0", ",", " ", 
+               RowBox[{"y", "/", "2"}]}], "}"}]}], "]"}], " ", " ", "+", " ", 
+           
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", 
+                RowBox[{"2", "*", "w1"}], " ", "+", " ", "y"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", " ", 
+               RowBox[{"y", "/", "2"}], ",", " ", 
+               RowBox[{"1", "/", "2"}]}], "}"}]}], "]"}], " ", "+", "  ", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", 
+                RowBox[{"4", "*", "w1"}], " ", "+", " ", "y", " ", "+", " ", 
+                "1"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", " ", 
+               RowBox[{"1", "/", "2"}], ",", " ", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"1", "+", "y"}], ")"}], "/", "2"}]}], "}"}]}], 
+            "]"}]}]}], " ", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"P", "[", "0", "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"P", "[", "1", "]"}], " ", "=", " ", 
+       RowBox[{"Expand", "[", 
+        RowBox[{"Assuming", "[", 
+         RowBox[{
+          RowBox[{"0", "<", "y", "<", "v", "<", "1"}], ",", " ", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], " ", "*", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", 
+                RowBox[{"2", "v1"}]}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "0", ",", "y"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", "0", ",", 
+               RowBox[{
+                RowBox[{"y", "/", "2"}], " ", "+", " ", 
+                RowBox[{"v1", "/", "2"}]}]}], "}"}]}], "]"}], " ", "+", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", 
+                RowBox[{"2", "w1"}], "+", "y", "-", "v1"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "0", ",", "y"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"y", "/", "2"}], " ", "+", " ", 
+                 RowBox[{"v1", "/", "2"}]}], ")"}], ",", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"1", "/", "2"}], " ", "+", " ", 
+                 RowBox[{"v1", "/", "2"}]}], ")"}]}], "}"}]}], "]"}], " ", 
+           "+", " ", "\[IndentingNewLine]", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", 
+                RowBox[{"4", "w1"}], "+", "y", "+", "1"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "0", ",", "y"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"1", "/", "2"}], " ", "+", " ", 
+                 RowBox[{"v1", "/", "2"}]}], ")"}], ",", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"1", "/", "2"}], " ", "+", " ", 
+                 RowBox[{"y", "/", "2"}]}], ")"}]}], "}"}]}], "]"}], " ", "+",
+            " ", "\[IndentingNewLine]", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{"-", "y"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "y", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", "0", ",", 
+               RowBox[{
+                RowBox[{"y", "/", "2"}], "+", 
+                RowBox[{"v1", "/", "2"}]}]}], "}"}]}], "]"}], " ", "+", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "2"}], "w1"}], "+", "v1"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "y", ",", "1"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", " ", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"y", "+", "v1"}], ")"}], "/", "2"}], ",", " ", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"1", "+", "v1"}], ")"}], "/", "2"}]}], "}"}]}], 
+            "]"}]}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"P", "[", "1", "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"k", "=", "2"}], ",", " ", 
+        RowBox[{"k", "<", " ", "n"}], ",", " ", 
+        RowBox[{"k", " ", "=", " ", 
+         RowBox[{"k", "+", "1"}]}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<Integrating attack \>\"", ",", "k"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"P", "[", "k", "]"}], " ", "=", " ", 
+          RowBox[{"Expand", "[", 
+           RowBox[{"Assuming", "[", 
+            RowBox[{
+             RowBox[{"0", "<", "y", "<", "v", "<", "1"}], ",", " ", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", 
+                   RowBox[{"2", "v1"}]}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "0", ",", "y"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", "v1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", "0", ",", 
+                  RowBox[{
+                   RowBox[{"y", "/", "2"}], "+", 
+                   RowBox[{"v1", "/", "2"}]}]}], "}"}]}], "]"}], " ", "+", 
+              " ", "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", 
+                   RowBox[{"2", "w1"}], " ", "+", " ", "y", "-", "v1"}], 
+                  ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "0", ",", "y"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", "v1"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", " ", 
+                  RowBox[{
+                   RowBox[{"y", "/", "2"}], "+", 
+                   RowBox[{"v1", "/", "2"}]}], ",", " ", 
+                  RowBox[{
+                   RowBox[{"1", "/", "2"}], "+", 
+                   RowBox[{"v1", "/", "2"}]}]}], "}"}]}], "]"}], " ", "+", 
+              " ", "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", 
+                   RowBox[{"4", "w1"}], "+", "y", "+", "1"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "0", ",", "y"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", "v1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", " ", 
+                  RowBox[{
+                   RowBox[{"1", "/", "2"}], "+", 
+                   RowBox[{"v1", "/", "2"}]}], ",", " ", 
+                  RowBox[{
+                   RowBox[{"1", "/", "2"}], "+", 
+                   RowBox[{"y", "/", "2"}]}]}], "}"}]}], "]"}], "+", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"-", "y"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "y", ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", "y"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", "0", ",", 
+                  RowBox[{
+                   RowBox[{"y", "/", "2"}], "+", 
+                   RowBox[{"v1", "/", "2"}]}]}], "}"}]}], "]"}], " ", "+", 
+              " ", "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"-", "2"}], "w1"}], " ", "+", " ", "v1"}], ")"}], 
+                 "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "y", ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", "y"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", " ", 
+                  RowBox[{
+                   RowBox[{"y", "/", "2"}], " ", "+", " ", 
+                   RowBox[{"v1", "/", "2"}]}], ",", " ", 
+                  RowBox[{
+                   RowBox[{"1", "/", "2"}], "+", 
+                   RowBox[{"v1", "/", "2"}]}]}], "}"}]}], "]"}], " ", "+", 
+              " ", "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"-", "v2"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "y", ",", "1"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "y", ",", "v1"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", "0", ",", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"v1", "+", "v2"}], ")"}], "/", "2"}]}], "}"}]}], 
+               "]"}], " ", "+", " ", "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"-", "2"}], "w1"}], "+", "v1"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "y", ",", "1"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "y", ",", "v1"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", " ", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"v1", "+", "v2"}], ")"}], "/", "2"}], ",", " ", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"1", "+", "v1"}], ")"}], "/", "2"}]}], "}"}]}], 
+               "]"}]}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", " ", 
+          RowBox[{"P", "[", "k", "]"}], "]"}], ";"}]}], "\[IndentingNewLine]",
+        "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<Finished integrating attack\>\"", "]"}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"T", "[", "n", "]"}], " ", "=", 
+       RowBox[{"Expand", "[", 
+        RowBox[{"Assuming", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"0", "<", "y", "<", "v", "<", "1"}], " ", "&&", " ", 
+           RowBox[{"v", ">", 
+            RowBox[{"1", "/", "2"}]}]}], ",", 
+          RowBox[{
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "v2"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", "v1", "-", "v2"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v2"}],
+                "]"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "0", ",", "v"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v2", ",", "0", ",", "v1"}], "}"}]}], "]"}], "+", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"n", "*", 
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "v2"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", "v1", "-", "v2"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v2"}],
+                "]"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "v", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v2", ",", "0", ",", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", "v1"}]}], "}"}]}], "]"}]}]}], "]"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"T", "[", "n", "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"T", "[", "0", "]"}], " ", "=", 
+       RowBox[{"Expand", "[", 
+        RowBox[{"Assuming", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"0", "<", "y", "<", "v", "<", "1"}], " ", "&&", " ", 
+           RowBox[{"v", ">", 
+            RowBox[{"1", "/", "2"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"Integrate", "[", 
+           RowBox[{
+            RowBox[{"n", "*", 
+             RowBox[{
+              RowBox[{"CDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}], "^", 
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}]}], "*", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"2", "v"}], "-", 
+               RowBox[{"2", "w1"}]}], ")"}], "*", 
+             RowBox[{"PDF", "[", 
+              RowBox[{
+               RowBox[{"BetaDistribution", "[", 
+                RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}], 
+              "]"}]}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"w1", ",", " ", "0", ",", "v"}], "}"}]}], "]"}]}], "]"}],
+         "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"T", "[", "0", "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"T", "[", "1", "]"}], " ", "=", " ", 
+       RowBox[{"Expand", "[", 
+        RowBox[{"Assuming", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"0", "<", "y", "<", "v", "<", "1"}], " ", "&&", " ", 
+           RowBox[{"v", ">", 
+            RowBox[{"1", "/", "2"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", 
+                RowBox[{"2", "w1"}]}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}]}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "0", ",", "1"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", 
+               RowBox[{"v1", "/", "2"}], ",", " ", "v"}], "}"}]}], "]"}], " ",
+            "+", "\[IndentingNewLine]", " ", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "*", 
+              RowBox[{
+               RowBox[{"CDF", "[", 
+                RowBox[{
+                 RowBox[{"BetaDistribution", "[", 
+                  RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                 "w1"}], "]"}], "^", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "2"}], ")"}]}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "v"}], "-", "v1"}], ")"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "v1"}],
+                "]"}], "*", 
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"BetaDistribution", "[", 
+                 RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", "w1"}],
+                "]"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v1", ",", "0", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"w1", ",", "0", ",", 
+               RowBox[{"v1", "/", "2"}]}], "}"}]}], "]"}]}]}], "]"}], "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"T", "[", "1", "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"k", "=", "2"}], ",", " ", 
+        RowBox[{"k", "<", " ", "n"}], ",", " ", 
+        RowBox[{"k", " ", "=", " ", 
+         RowBox[{"k", "+", "1"}]}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<Integrating truth \>\"", ",", "k"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"T", "[", "k", "]"}], " ", "=", " ", 
+          RowBox[{"Expand", "[", 
+           RowBox[{"Assuming", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"0", "<", "y", "<", "v", "<", "1"}], " ", "&&", " ", 
+              RowBox[{"v", ">", 
+               RowBox[{"1", "/", "2"}]}]}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", "v1", "-", "v2"}], ")"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "0", ",", "v"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", "v1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", "0", ",", 
+                  RowBox[{
+                   RowBox[{"v1", "/", "2"}], "+", 
+                   RowBox[{"v2", "/", "2"}]}]}], "}"}]}], "]"}], " ", "+", 
+              " ", "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", "v1", "-", "v2"}], ")"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "v", ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", "v1"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", "0", ",", 
+                  RowBox[{
+                   RowBox[{"v1", "/", "2"}], "+", 
+                   RowBox[{"v2", "/", "2"}]}]}], "}"}]}], "]"}], "+", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", 
+                   RowBox[{"2", "w1"}]}], ")"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "0", ",", "v"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", "v1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"v1", "+", "v2"}], ")"}], "/", "2"}], ",", " ", 
+                  "v"}], "}"}]}], "]"}], "+", "\[IndentingNewLine]", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"k", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"k", "-", "1"}], ")"}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "k"}], ")"}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "v2"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"k", "-", "2"}], ")"}]}], "*", 
+                 RowBox[{
+                  RowBox[{"CDF", "[", 
+                   RowBox[{
+                    RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                    "w1"}], "]"}], "^", 
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "k", "-", "1"}], ")"}]}], "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", 
+                   RowBox[{"2", "w1"}]}], ")"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "w1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v1"}], "]"}], "*", 
+                 RowBox[{"PDF", "[", 
+                  RowBox[{
+                   RowBox[{"BetaDistribution", "[", 
+                    RowBox[{"alpha", ",", " ", "beta"}], "]"}], ",", " ", 
+                   "v2"}], "]"}]}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v1", ",", "v", ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"v2", ",", "0", ",", 
+                  RowBox[{
+                   RowBox[{"2", "v"}], "-", "v1"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"w1", ",", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"v1", "+", "v2"}], ")"}], "/", "2"}], ",", " ", 
+                  "v"}], "}"}]}], "]"}]}]}], "]"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"T", "[", "k", "]"}], "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<Finished integrating truth\>\"", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"polyexp", " ", "=", " ", 
+       RowBox[{"Expand", "[", 
+        RowBox[{"Sum", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"q", "^", "k"}], "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "-", "q"}], ")"}], "^", 
+            RowBox[{"(", 
+             RowBox[{"n", "-", "k"}], ")"}]}], "*", 
+           RowBox[{"Binomial", "[", 
+            RowBox[{"n", ",", "k"}], "]"}], "*", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"T", "[", "k", "]"}], " ", "-", " ", 
+             RowBox[{"P", "[", "k", "]"}]}], ")"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", "0", ",", "n"}], "}"}]}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<Final expression\>\"", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "polyexp", "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.78288371780999*^9, {3.7828837786586447`*^9, 3.782883854540504*^9}, {
+   3.782884446105654*^9, 3.7828845265349083`*^9}, {3.7828862840207777`*^9, 
+   3.782886286115102*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"affd105f-bf92-4f82-bf8c-39a27a45e601"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"alpha\"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["alpha", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886288010306*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"a826f3a6-a17b-4d6e-b9ce-fad54f8741d5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"beta\"\>", "\[InvisibleSpace]", "3"}],
+  SequenceForm["beta", 3],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.78288628802354*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"32ea9859-8473-4f0a-a1fb-419e77ba066c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"n\"\>", "\[InvisibleSpace]", "2"}],
+  SequenceForm["n", 2],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886288037262*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"dc707a25-cfbf-4638-804d-54c658c74880"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["1", "7"]}], "-", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["y", "2"]}], "+", 
+  RowBox[{"18", " ", "v", " ", 
+   SuperscriptBox["y", "2"]}], "+", 
+  RowBox[{"2", " ", 
+   SuperscriptBox["y", "3"]}], "-", 
+  RowBox[{"36", " ", "v", " ", 
+   SuperscriptBox["y", "3"]}], "+", 
+  RowBox[{"4", " ", 
+   SuperscriptBox["y", "4"]}], "+", 
+  RowBox[{"30", " ", "v", " ", 
+   SuperscriptBox["y", "4"]}], "-", 
+  RowBox[{"6", " ", 
+   SuperscriptBox["y", "5"]}], "-", 
+  RowBox[{"12", " ", "v", " ", 
+   SuperscriptBox["y", "5"]}], "+", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["y", "6"]}], "+", 
+  RowBox[{"2", " ", "v", " ", 
+   SuperscriptBox["y", "6"]}], "-", 
+  FractionBox[
+   RowBox[{"4", " ", 
+    SuperscriptBox["y", "7"]}], "7"]}]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886292428322*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"f5c1ebc1-feb7-4fc5-b1ac-89cee3b17253"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["47", "112"]}], "+", 
+  FractionBox[
+   RowBox[{"49", " ", "v"}], "32"], "+", 
+  FractionBox[
+   RowBox[{"7", " ", "y"}], "64"], "+", 
+  FractionBox[
+   RowBox[{"21", " ", "v", " ", "y"}], "16"], "+", 
+  FractionBox[
+   RowBox[{"33", " ", 
+    SuperscriptBox["y", "2"]}], "64"], "-", 
+  FractionBox[
+   RowBox[{"33", " ", "v", " ", 
+    SuperscriptBox["y", "2"]}], "32"], "-", 
+  FractionBox[
+   RowBox[{"33", " ", 
+    SuperscriptBox["y", "3"]}], "64"], "-", 
+  FractionBox[
+   RowBox[{"v", " ", 
+    SuperscriptBox["y", "3"]}], "8"], "+", 
+  FractionBox[
+   RowBox[{"23", " ", 
+    SuperscriptBox["y", "4"]}], "64"], "+", 
+  FractionBox[
+   RowBox[{"15", " ", "v", " ", 
+    SuperscriptBox["y", "4"]}], "32"], "-", 
+  FractionBox[
+   RowBox[{"15", " ", 
+    SuperscriptBox["y", "5"]}], "64"], "-", 
+  FractionBox[
+   RowBox[{"3", " ", "v", " ", 
+    SuperscriptBox["y", "5"]}], "16"], "+", 
+  FractionBox[
+   RowBox[{"5", " ", 
+    SuperscriptBox["y", "6"]}], "64"], "+", 
+  FractionBox[
+   RowBox[{"v", " ", 
+    SuperscriptBox["y", "6"]}], "32"], "-", 
+  FractionBox[
+   RowBox[{"3", " ", 
+    SuperscriptBox["y", "7"]}], "224"]}]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886296212098*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"fe922861-3c2e-4b6c-8fed-647f95e0445a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["19", "80"]}], "-", 
+  FractionBox[
+   RowBox[{"49", " ", "y"}], "160"], "+", 
+  FractionBox[
+   RowBox[{"21", " ", "v", " ", "y"}], "4"], "-", 
+  FractionBox[
+   RowBox[{"183", " ", 
+    SuperscriptBox["y", "2"]}], "160"], "-", 
+  RowBox[{"3", " ", "v", " ", 
+   SuperscriptBox["y", "2"]}], "+", 
+  FractionBox[
+   RowBox[{"59", " ", 
+    SuperscriptBox["y", "3"]}], "32"], "-", 
+  FractionBox[
+   RowBox[{"11", " ", "v", " ", 
+    SuperscriptBox["y", "3"]}], "4"], "-", 
+  FractionBox[
+   RowBox[{"9", " ", 
+    SuperscriptBox["y", "4"]}], "32"], "+", 
+  FractionBox[
+   RowBox[{"15", " ", "v", " ", 
+    SuperscriptBox["y", "4"]}], "4"], "-", 
+  FractionBox[
+   RowBox[{"3", " ", 
+    SuperscriptBox["y", "5"]}], "4"], "-", 
+  FractionBox[
+   RowBox[{"3", " ", "v", " ", 
+    SuperscriptBox["y", "5"]}], "2"], "+", 
+  FractionBox[
+   RowBox[{"7", " ", 
+    SuperscriptBox["y", "6"]}], "16"], "+", 
+  FractionBox[
+   RowBox[{"v", " ", 
+    SuperscriptBox["y", "6"]}], "4"], "-", 
+  FractionBox[
+   RowBox[{"5", " ", 
+    SuperscriptBox["y", "7"]}], "56"]}]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.78288631311357*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"ae57bc30-31d1-407e-a93a-f7638bd5d2c9"],
+
+Cell[BoxData["\<\"Finished integrating attack\"\>"], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886313120234*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"c13a93e8-de8d-4e4b-a189-0a1bd5e191a6"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["29", "70"], "-", 
+  FractionBox[
+   RowBox[{"22", " ", "v"}], "5"], "+", 
+  FractionBox[
+   RowBox[{"96", " ", 
+    SuperscriptBox["v", "2"]}], "5"], "-", 
+  RowBox[{"32", " ", 
+   SuperscriptBox["v", "3"]}], "+", 
+  RowBox[{"32", " ", 
+   SuperscriptBox["v", "4"]}], "-", 
+  FractionBox[
+   RowBox[{"96", " ", 
+    SuperscriptBox["v", "5"]}], "5"], "+", 
+  FractionBox[
+   RowBox[{"32", " ", 
+    SuperscriptBox["v", "6"]}], "5"], "-", 
+  FractionBox[
+   RowBox[{"32", " ", 
+    SuperscriptBox["v", "7"]}], "35"]}]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.7828863202117767`*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"13bf7ebd-8afc-4aa8-ad8b-6a4230aca361"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"6", " ", 
+   SuperscriptBox["v", "3"]}], "-", 
+  RowBox[{"9", " ", 
+   SuperscriptBox["v", "4"]}], "+", 
+  RowBox[{"6", " ", 
+   SuperscriptBox["v", "5"]}], "-", 
+  RowBox[{"2", " ", 
+   SuperscriptBox["v", "6"]}], "+", 
+  FractionBox[
+   RowBox[{"2", " ", 
+    SuperscriptBox["v", "7"]}], "7"]}]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886322049857*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"df5e009f-cc92-4d62-a72e-18a5c97291eb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["71", "1120"]}], "+", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["v", "2"]}], "-", 
+  RowBox[{"2", " ", 
+   SuperscriptBox["v", "3"]}], "+", 
+  FractionBox[
+   SuperscriptBox["v", "4"], "2"]}]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886326845316*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"e2943e70-7c15-409a-98b0-154c8944fff3"],
+
+Cell[BoxData["\<\"Finished integrating truth\"\>"], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886326893285*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"c4913d24-5ec2-41fd-84d4-6904f15cb2e7"],
+
+Cell[BoxData["\<\"Final expression\"\>"], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.7828863269089127`*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"c9f52b74-390f-477e-b500-76deee889599"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["47", "112"], "-", 
+  FractionBox[
+   RowBox[{"55", " ", "q"}], "112"], "+", 
+  FractionBox[
+   RowBox[{"22", " ", 
+    SuperscriptBox["q", "2"]}], "35"], "-", 
+  FractionBox[
+   RowBox[{"49", " ", "v"}], "32"], "+", 
+  FractionBox[
+   RowBox[{"49", " ", "q", " ", "v"}], "16"], "-", 
+  FractionBox[
+   RowBox[{"949", " ", 
+    SuperscriptBox["q", "2"], " ", "v"}], "160"], "+", 
+  RowBox[{"6", " ", "q", " ", 
+   SuperscriptBox["v", "2"]}], "+", 
+  FractionBox[
+   RowBox[{"66", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["v", "2"]}], "5"], "+", 
+  RowBox[{"6", " ", 
+   SuperscriptBox["v", "3"]}], "-", 
+  RowBox[{"16", " ", "q", " ", 
+   SuperscriptBox["v", "3"]}], "-", 
+  RowBox[{"22", " ", 
+   SuperscriptBox["q", "2"], " ", 
+   SuperscriptBox["v", "3"]}], "-", 
+  RowBox[{"9", " ", 
+   SuperscriptBox["v", "4"]}], "+", 
+  RowBox[{"19", " ", "q", " ", 
+   SuperscriptBox["v", "4"]}], "+", 
+  RowBox[{"22", " ", 
+   SuperscriptBox["q", "2"], " ", 
+   SuperscriptBox["v", "4"]}], "+", 
+  RowBox[{"6", " ", 
+   SuperscriptBox["v", "5"]}], "-", 
+  RowBox[{"12", " ", "q", " ", 
+   SuperscriptBox["v", "5"]}], "-", 
+  FractionBox[
+   RowBox[{"66", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["v", "5"]}], "5"], "-", 
+  RowBox[{"2", " ", 
+   SuperscriptBox["v", "6"]}], "+", 
+  RowBox[{"4", " ", "q", " ", 
+   SuperscriptBox["v", "6"]}], "+", 
+  FractionBox[
+   RowBox[{"22", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["v", "6"]}], "5"], "+", 
+  FractionBox[
+   RowBox[{"2", " ", 
+    SuperscriptBox["v", "7"]}], "7"], "-", 
+  FractionBox[
+   RowBox[{"4", " ", "q", " ", 
+    SuperscriptBox["v", "7"]}], "7"], "-", 
+  FractionBox[
+   RowBox[{"22", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["v", "7"]}], "35"], "-", 
+  FractionBox[
+   RowBox[{"7", " ", "y"}], "64"], "+", 
+  FractionBox[
+   RowBox[{"133", " ", "q", " ", "y"}], "160"], "-", 
+  FractionBox[
+   RowBox[{"231", " ", 
+    SuperscriptBox["q", "2"], " ", "y"}], "320"], "-", 
+  FractionBox[
+   RowBox[{"21", " ", "v", " ", "y"}], "16"], "-", 
+  FractionBox[
+   RowBox[{"63", " ", "q", " ", "v", " ", "y"}], "8"], "+", 
+  RowBox[{
+   FractionBox["147", "16"], " ", 
+   SuperscriptBox["q", "2"], " ", "v", " ", "y"}], "-", 
+  FractionBox[
+   RowBox[{"33", " ", 
+    SuperscriptBox["y", "2"]}], "64"], "+", 
+  FractionBox[
+   RowBox[{"531", " ", "q", " ", 
+    SuperscriptBox["y", "2"]}], "160"], "+", 
+  FractionBox[
+   RowBox[{"63", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["y", "2"]}], "320"], "+", 
+  FractionBox[
+   RowBox[{"33", " ", "v", " ", 
+    SuperscriptBox["y", "2"]}], "32"], "+", 
+  RowBox[{
+   FractionBox["63", "16"], " ", "q", " ", "v", " ", 
+   SuperscriptBox["y", "2"]}], "-", 
+  RowBox[{
+   FractionBox["735", "32"], " ", 
+   SuperscriptBox["q", "2"], " ", "v", " ", 
+   SuperscriptBox["y", "2"]}], "+", 
+  FractionBox[
+   RowBox[{"33", " ", 
+    SuperscriptBox["y", "3"]}], "64"], "-", 
+  FractionBox[
+   RowBox[{"151", " ", "q", " ", 
+    SuperscriptBox["y", "3"]}], "32"], "+", 
+  FractionBox[
+   RowBox[{"141", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["y", "3"]}], "64"], "+", 
+  FractionBox[
+   RowBox[{"v", " ", 
+    SuperscriptBox["y", "3"]}], "8"], "+", 
+  RowBox[{
+   FractionBox["21", "4"], " ", "q", " ", "v", " ", 
+   SuperscriptBox["y", "3"]}], "+", 
+  RowBox[{
+   FractionBox["245", "8"], " ", 
+   SuperscriptBox["q", "2"], " ", "v", " ", 
+   SuperscriptBox["y", "3"]}], "-", 
+  FractionBox[
+   RowBox[{"23", " ", 
+    SuperscriptBox["y", "4"]}], "64"], "+", 
+  FractionBox[
+   RowBox[{"41", " ", "q", " ", 
+    SuperscriptBox["y", "4"]}], "32"], "-", 
+  FractionBox[
+   RowBox[{"315", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["y", "4"]}], "64"], "-", 
+  FractionBox[
+   RowBox[{"15", " ", "v", " ", 
+    SuperscriptBox["y", "4"]}], "32"], "-", 
+  RowBox[{
+   FractionBox["105", "16"], " ", "q", " ", "v", " ", 
+   SuperscriptBox["y", "4"]}], "-", 
+  RowBox[{
+   FractionBox["735", "32"], " ", 
+   SuperscriptBox["q", "2"], " ", "v", " ", 
+   SuperscriptBox["y", "4"]}], "+", 
+  FractionBox[
+   RowBox[{"15", " ", 
+    SuperscriptBox["y", "5"]}], "64"], "+", 
+  FractionBox[
+   RowBox[{"33", " ", "q", " ", 
+    SuperscriptBox["y", "5"]}], "32"], "+", 
+  FractionBox[
+   RowBox[{"303", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["y", "5"]}], "64"], "+", 
+  FractionBox[
+   RowBox[{"3", " ", "v", " ", 
+    SuperscriptBox["y", "5"]}], "16"], "+", 
+  RowBox[{
+   FractionBox["21", "8"], " ", "q", " ", "v", " ", 
+   SuperscriptBox["y", "5"]}], "+", 
+  RowBox[{
+   FractionBox["147", "16"], " ", 
+   SuperscriptBox["q", "2"], " ", "v", " ", 
+   SuperscriptBox["y", "5"]}], "-", 
+  FractionBox[
+   RowBox[{"5", " ", 
+    SuperscriptBox["y", "6"]}], "64"], "-", 
+  FractionBox[
+   RowBox[{"23", " ", "q", " ", 
+    SuperscriptBox["y", "6"]}], "32"], "-", 
+  FractionBox[
+   RowBox[{"141", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["y", "6"]}], "64"], "-", 
+  FractionBox[
+   RowBox[{"v", " ", 
+    SuperscriptBox["y", "6"]}], "32"], "-", 
+  RowBox[{
+   FractionBox["7", "16"], " ", "q", " ", "v", " ", 
+   SuperscriptBox["y", "6"]}], "-", 
+  RowBox[{
+   FractionBox["49", "32"], " ", 
+   SuperscriptBox["q", "2"], " ", "v", " ", 
+   SuperscriptBox["y", "6"]}], "+", 
+  FractionBox[
+   RowBox[{"3", " ", 
+    SuperscriptBox["y", "7"]}], "224"], "+", 
+  FractionBox[
+   RowBox[{"17", " ", "q", " ", 
+    SuperscriptBox["y", "7"]}], "112"], "+", 
+  FractionBox[
+   RowBox[{"13", " ", 
+    SuperscriptBox["q", "2"], " ", 
+    SuperscriptBox["y", "7"]}], "32"]}]], "Print",
+ CellChangeTimes->{3.782883867586301*^9, 3.782886326923738*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"e55bfa5f-ef02-460d-9235-befcf5473b8b"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{316, Automatic}, {Automatic, 50}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 54745, 1279, 2173, "Input",ExpressionUUID->"affd105f-bf92-4f82-bf8c-39a27a45e601"],
+Cell[CellGroupData[{
+Cell[55350, 1305, 315, 8, 24, "Print",ExpressionUUID->"a826f3a6-a17b-4d6e-b9ce-fad54f8741d5"],
+Cell[55668, 1315, 312, 8, 24, "Print",ExpressionUUID->"32ea9859-8473-4f0a-a1fb-419e77ba066c"],
+Cell[55983, 1325, 307, 8, 24, "Print",ExpressionUUID->"dc707a25-cfbf-4638-804d-54c658c74880"],
+Cell[56293, 1335, 963, 30, 43, "Print",ExpressionUUID->"f5c1ebc1-feb7-4fc5-b1ac-89cee3b17253"],
+Cell[57259, 1367, 1369, 46, 43, "Print",ExpressionUUID->"fe922861-3c2e-4b6c-8fed-647f95e0445a"],
+Cell[58631, 1415, 1292, 43, 43, "Print",ExpressionUUID->"ae57bc30-31d1-407e-a93a-f7638bd5d2c9"],
+Cell[59926, 1460, 230, 4, 24, "Print",ExpressionUUID->"c13a93e8-de8d-4e4b-a189-0a1bd5e191a6"],
+Cell[60159, 1466, 736, 24, 43, "Print",ExpressionUUID->"13bf7ebd-8afc-4aa8-ad8b-6a4230aca361"],
+Cell[60898, 1492, 511, 16, 43, "Print",ExpressionUUID->"df5e009f-cc92-4d62-a72e-18a5c97291eb"],
+Cell[61412, 1510, 424, 13, 43, "Print",ExpressionUUID->"e2943e70-7c15-409a-98b0-154c8944fff3"],
+Cell[61839, 1525, 229, 4, 24, "Print",ExpressionUUID->"c4913d24-5ec2-41fd-84d4-6904f15cb2e7"],
+Cell[62071, 1531, 221, 4, 24, "Print",ExpressionUUID->"c9f52b74-390f-477e-b500-76deee889599"],
+Cell[62295, 1537, 5831, 188, 121, "Print",ExpressionUUID->"e55bfa5f-ef02-460d-9235-befcf5473b8b"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
