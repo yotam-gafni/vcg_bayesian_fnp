@@ -1,4 +1,5 @@
-This repository contains the Mathematica and Maple scripts to generate figure 1 and 2 in the paper "VCG under Sybil (False name) attacks - A bayesian analysis" by Yotam Gafni, Ron Lavi and Moshe Tennenholtz.
+This repository contains the Mathematica and Maple scripts to generate figure 1 and 2 in the paper
+Gafni, Y., Lavi, R. and Tennenholtz M. 2020. VCG Under Sybil (False-name) Attacks - a Bayesian Analysis. In Proceedings of the 34th National Conference on Artificial Intelligence (AAAI-20)
 
 For a full validation flow for some alpha, beta, n value, first note that the n used in the Mathematica notebooks are \tilde{n} of the paper, so decrease n by 1 for your input. Now do the following:
 1. Using split_attack_valfinder.nb, get the split attack granularity threshold for the values. Since this is much more easily feasible than the full polynomial verification, you can do it for higher values of alpha, beta, n. Also note that the script gives a numerical value for the granularity threshold - since it's not an exact expression, when you verify it in the following steps you might want to add a small epsilon (say 1/10^6) in order for calculation issues not to come up.
